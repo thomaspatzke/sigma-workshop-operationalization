@@ -1,0 +1,49 @@
+name: Target data model
+priority: 30
+transformations:
+- id: field_mapping
+  type: field_name_mapping
+  mapping:
+    Image: ImageFileName
+- id: drop_fields
+  type: drop_detection_item
+  field_name_conditions:
+    - type: include_fields
+      fields:
+        - OriginalFileName
+- id: fail_on_dir_in_path
+  type: detection_item_failure
+  message: "ImageFileName should not contain a directory path"
+  field_name_conditions:
+    - type: include_fields
+      fields:
+        - ImageFileName
+  detection_item_conditions:
+    - type: match_string
+      cond: any
+      pattern: "^\\*\\\\?[^\\\\]+$"
+      negate: true
+- id: path_to_file_name
+  type: replace_string
+  regex: "^\\*\\\\([^\\\\]+)$"
+  replacement: "\\1"
+  field_name_conditions:
+    - type: include_fields
+      fields:
+        - ImageFileName
+- id: windows_conditions
+  type: add_condition
+  conditions:
+    index: windows
+    sourcetype: Custom:$category
+  template: yes
+  rule_conditions:
+    - type: logsource
+      product: windows
+- id: placeholder_fallback
+  type: wildcard_placeholders
+vars:
+  userdomain:
+    - company_domain
+    - carveout_domain
+    - acquisitions_domain
