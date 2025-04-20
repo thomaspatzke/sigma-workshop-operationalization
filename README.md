@@ -25,18 +25,42 @@ command line interface [Sigma CLI](https://github.com/SigmaHQ/sigma-cli).
 
 ## Commands
 
-1. Conversion without processing pipeline: `sigma convert -t splunk --without-pipeline sigma\rules\windows\process_creation\proc_creation_win_rundll32_obfuscated_ordinal_call.yml`
+1. Conversion without processing pipeline:
+```powershell
+sigma convert -t splunk --without-pipeline sigma\rules\windows\process_creation\proc_creation_win_rundll32_obfuscated_ordinal_call.yml
+```
 
-2. Conversion with first pipeline with field mappings, value conversions and removals: `sigma convert -t splunk -p pipeline-1.yml sigma\rules\windows\process_creation\proc_creation_win_rundll32_obfuscated_ordinal_call.yml`
+2. Conversion with first pipeline with field mappings, value conversions and removals:
+```powershell
+sigma convert -t splunk -p pipeline-1.yml sigma\rules\windows\process_creation\proc_creation_win_rundll32_obfuscated_ordinal_call.yml
+```
 
-3. Conversion that raises error due to unsupported value: `sigma convert -t splunk -p pipeline-2.yml sigma\rules\windows\process_creation\proc_creation_win_appvlp_uncommon_child_process.yml`
+3. Conversion that raises error due to unsupported value:
+```powershell
+sigma convert -t splunk -p pipeline-2.yml sigma\rules\windows\process_creation\proc_creation_win_appvlp_uncommon_child_process.yml
+```
 
-4. Addition of conditions: `sigma convert -t splunk -p pipeline-3.yml sigma\rules\windows\process_creation\proc_creation_win_rundll32_obfuscated_ordinal_call.yml`
+4. Addition of conditions:
+```powershell
+sigma convert -t splunk -p pipeline-3.yml sigma\rules\windows\process_creation\proc_creation_win_rundll32_obfuscated_ordinal_call.yml
+```
 
-5. Error on unhandled placeholders: `sigma convert -t splunk -p pipeline-3.yml sigma\rules-placeholder\windows\process_creation\proc_creation_win_userdomain_variable_enumeration.yml`
+5. Error on unhandled placeholders:
+```powershell
+sigma convert -t splunk -p pipeline-3.yml sigma\rules-placeholder\windows\process_creation\proc_creation_win_userdomain_variable_enumeration.yml
+```
 
-6. Replacement of placeholders: `sigma convert -t splunk -p pipeline-4.yml sigma\rules-placeholder\windows\process_creation\proc_creation_win_userdomain_variable_enumeration.yml`
+6. Replacement of placeholders:
+```powershell
+sigma convert -t splunk -p pipeline-4.yml sigma\rules-placeholder\windows\process_creation\proc_creation_win_userdomain_variable_enumeration.yml
+```
 
-7. Conversion of rule set without query postprocessing as separate queries: `sigma convert -t splunk -p pipeline-4.yml sigma\rules\windows\process_access\`
+7. Conversion of rule set without query postprocessing as separate queries:
+```powershell
+sigma convert -t splunk -p pipeline-4.yml sigma\rules\windows\process_access\
+```
 
-8. Conversion of rule set with query postprocessing to output a Splunk savedsearches.conf: `sigma convert -t splunk -p pipeline-5.yml sigma\rules\windows\process_access\`
+8. Conversion of rule set with query postprocessing to output a Splunk savedsearches.conf:
+```powershell
+sigma convert -t splunk -p pipeline-5.yml sigma\rules\windows\process_access\
+```
