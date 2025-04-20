@@ -16,9 +16,10 @@ command line interface [Sigma CLI](https://github.com/SigmaHQ/sigma-cli).
 
 ## Prerequisites
 
-* Python 3.9 to 3.12
+* Python 3.9 to 3.13
 * [Sigma CLI](https://github.com/SigmaHQ/sigma-cli):
   * Recommendation: install in separate Python environment with [pipx]([Sigma CLI](https://github.com/SigmaHQ/sigma-cli)) `pipx install sigma-cli`.
+  * To follow the examples from the presentation install the Splunk and Elasticsearch plugins: `sigma plugin install splunk elasticsearch`
 * Clone the SigmaHQ rule repository with `git clone https://github.com/SigmaHQ/sigma.git`
 * Clone of this workshop repository.
 
